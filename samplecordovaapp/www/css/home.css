@@ -8,6 +8,11 @@ body {
 }
 
 
+#dvMap {
+
+    margin-top:-116px;
+}
+
 
 @media screen and (orientation: portrait) {
 }
