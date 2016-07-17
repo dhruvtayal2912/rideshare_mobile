@@ -28,7 +28,7 @@
                     $(".backArrow .glyphicon-chevron-left").css("display", "inline-block");
                     $("#secondPage").css("display", "block");
                     $("#secondPage").css("position", "absolute");
-                    $("#secondPage").css("top", "100px");
+                    $("#secondPage").css("top", "85px");
                     $("#secondPage").css("padding-right", "30px");
                     $("#secondPage input[type=time]").prop('required', true);
 
