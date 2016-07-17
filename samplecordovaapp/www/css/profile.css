@@ -10,10 +10,35 @@ body {
 .header {
     font-size: 24px;
     font-weight: bold;
-    padding-top: 15px;
+    padding-top: 7px;
     color:#337ab7;
     text-align:center;
-    height:7vh;
+    height:6vh;
+}
+
+/*.header .text{
+    padding-left: 5px;
+}*/
+
+#btnNext
+{
+    float:right;
+}
+
+.form-control
+{
+    height:30px;
+}
+
+hr{
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+form label
+{
+    font-size:15px;
+    font-weight:normal;
 }
 
 .form-container{
@@ -23,10 +48,6 @@ body {
 .form-horizontal .radio-inline
 {
     padding-top:0px;
-}
-
-.form-container button{
-    margin-top:5px;
 }
 
 .center

@@ -5,50 +5,71 @@
 (function () {
     "use strict";
 
-    document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
+    document.addEventListener('deviceready', onDeviceReady.bind(this), false);
 
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
         document.addEventListener( 'pause', onPause.bind( this ), false );
         document.addEventListener( 'resume', onResume.bind( this ), false );
-        
+
+        $('form').validator().on('submit', function (e) {
+            if (e.isDefaultPrevented()) {
+                //Nothing to do if form is invalid
+            } else {
+                e.preventDefault();
+                var username = $("#inputName").val();
+                var password = $("#inputPassword").val();
+                //start spinner here
+                $('body').pleaseWait();
+
+                $.ajax({
+                    type: 'GET',
+                    url: "http://ndadevpc204:8082/api/account/login",
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: { username: username, password: password },
+                    success: function (response) {
+                        //stop spinner here   
+                        $('body').pleaseWait('stop');
+
+                        if (response.Token != null) {
+                            // Create session. 
+                            RideShare.Session.getInstance().set(response.Token);
+
+                            if (response.HasProfile) {
+                                window.location.href = "main.html";
+                            }
+                            else {
+                                if (response.ExistingProfileData != null) {
+                                    localStorage["Name"] = response.ExistingProfileData.Name;
+                                    localStorage["Email"] = response.ExistingProfileData.Email;
+                                    window.location.href = "profile.html";
+                                }
+                                else
+                                {
+                                    alert("There is some problem at the moment. Please try again.");
+                                }                                
+                            }
+                            return false;
+                        } else {
+                            //TODO:Add custom code
+                            alert("There is some error in generating token. Please try again.")
+                            window.location.href = "login.html";
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        $('body').pleaseWait('stop');
+                        alert("There is some problem at the moment. Please try again.");
+                    }
+                });
+            }
+            return false;
+        })
+
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
-        
-        $("#btnLogin").on("click", function () {
-            window.location.href = "main.html";
-            //TODO: start spinner here
-            //$.ajax({
-            //    type: 'POST',
-            //    url: "http://localhost:8082/api/account/login",
-            //    contentType: 'application/json',
-            //    dataType: 'json',
-            //    data: JSON.stringify({ email: "", password: "" }),
-            //    success: function (resp) {
-            //    //TODO: stop spinner here
-            //        if (resp.success === true) {
-            //            // Create session. 
-            //            var today = new Date();
-            //            var expirationDate = new Date();
-            //            expirationDate.setTime(today.getTime() + BookIt.Settings.sessionTimeo utInMSec);
-            //            BookIt.Session.getInstance().set({
-            //                userProfileModel: resp.extras.userProfileModel,
-            //                sessionId: resp.extras.sessionId,
-            //                expirationDate: expirationDate,
-            //                keepSignedIn: me.$chkKeepSignedIn.is(":checked")
-            //            });
-                       
-            //            return false;
-            //        } else {
-            //            //TODO:Add custom code
-            //        }
-            //    },
-            //    error: function (e) {
-            //        //TODO: stop spinner here
-            //        console.log(e.message);
-            //        //TODO: Use a friendlier error message below.
-            //    }
-            //});
-        });
+        //$("#btnLogin").on("click", function () {
+            
+        //});
 
         $(".header .glyphicon").on("click", function () {
             window.location.href = "index.html";

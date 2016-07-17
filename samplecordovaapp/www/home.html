@@ -1,26 +1,78 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
     <!--
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="css/home.css">        
-        <title>Markit RideShare Login</title>
-    </head>
-    <body>
-        
-       
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-        <script src="scripts/jquery.min.js"></script>
-        <script src="scripts/bootstrap.min.js"></script>
-        <script type="text/javascript" src="scripts/home.js"></script>        
-    </body>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/jasny-bootstrap.min.css" rel="stylesheet" />
+    <link href="css/navmenu-reveal.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <title>Markit RideShare Login</title>
+</head>
+<body>
+
+    <!-- start of slider -->
+    <div class="navmenu navmenu-default navmenu-fixed-left">
+        <a class="navmenu-brand" href="#">Project name</a>
+        <ul class="nav navmenu-nav">
+            <li><a href="../navmenu/">Slide in</a></li>
+            <li><a href="../navmenu-push/">Push</a></li>
+            <li class="active"><a href="./">Reveal</a></li>
+            <li><a href="../navbar-offcanvas/">Off canvas navbar</a></li>
+        </ul>
+        <ul class="nav navmenu-nav">
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu navmenu-nav">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- end of slider -->
+
+    <div class="canvas" style="">
+        <div class="navbar navbar-default navbar-fixed-top" style="">
+            <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="header">
+                <span class="text">Mapping 20 results</span>
+                <span class="glyphicon glyphicon-cog" style="padding-left:15px;"></span>
+            </div>
+            
+        </div>
+        <hr />
+        <div class="container">
+            <div id="listButton">
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> LIST</button>
+            </div>            
+        </div><!-- /.container -->
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/jasny-bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/home.js"></script>
+</body>
 </html>

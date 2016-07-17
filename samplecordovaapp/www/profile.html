@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
     <!--
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="css/profile.css">        
-        <title>Markit RideShare Profile</title>
-    </head>
-    <body>
-        <div class="header">
-            <span class="text">Complete Your Profile</span>
-        </div>        
-        <hr />     
-        <div class="form-container">
-            <form class="form-horizontal">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
+    <title>Markit RideShare Profile</title>
+</head>
+<body>
+    <div class="header">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="display:none;"></span>
+        <span class="text">Complete Your Profile</span>
+    </div>
+    <hr />
+    <div class="form-container">
+        <form class="form-horizontal">
+            <section id="firstPage">
                 <div class="form-group">
-                    <!--<label for="inputEmail" class="control-label col-xs-2">Email</label>-->
+                    <label for="inputName" class="control-label col-xs-12">Name</label>
                     <div class="col-xs-12">
-                        <input type="text" class="form-control" id="inputEmpId" placeholder="Emp Id">
+                        <input type="text" class="form-control" id="inputName" placeholder="name" readonly="readonly">
                     </div>
                 </div>
                 <div class="form-group">
-                    <!--<label for="inputEmail" class="control-label col-xs-2">Email</label>-->
-                    <div class="col-xs-12">
-                        <input type="text" class="form-control" id="inputName" placeholder="Name">
-                    </div>
-                </div>
-                <div class="form-group">
+                    <label for="sex" class="control-label col-xs-12">Gender</label>
                     <div class="col-xs-12">
                         <label class="radio-inline" for="male">
                             <input type="radio" name="sex" id="male" value="0" checked="checked">
@@ -46,65 +43,97 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <!--<label for="inputEmail" class="control-label col-xs-2">Email</label>-->
+                    <label for="inputEmail" class="control-label col-xs-12">Email</label>
                     <div class="col-xs-12">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" readonly="readonly">
                     </div>
                 </div>
                 <div class="form-group">
-                    <!--<label for="inputPassword" class="control-label col-xs-2">Password</label>-->
+                    <label for="inputContact" class="control-label col-xs-12">Contact Number</label>
                     <div class="col-xs-12">
-                        <input type="text" class="form-control" id="inputContact" placeholder="Contact">
+                        <input type="text" class="form-control" id="inputContact" placeholder="10 digit contact number" minlength="10" maxlength="10" pattern="^\d{10}$" required>
+                        <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <!--<label for="inputPassword" class="control-label col-xs-2">Password</label>-->
+                    <label for="inputAddress" class="control-label col-xs-12">Address</label>
                     <div class="col-xs-12">
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Address" required>
+                        <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <!--<label for="inputPassword" class="control-label col-xs-2">Password</label>-->
+                    <label for="inputCarNumber" class="control-label col-xs-12">Car Number</label>
                     <div class="col-xs-12">
                         <input type="text" class="form-control" id="inputCarNumber" placeholder="Car Number">
                     </div>
                 </div>
                 <div class="form-group">
-                    <!--<label for="inputPassword" class="control-label col-xs-2">Password</label>-->
+                    <div class="col-xs-12">
+                        <button id="btnNext" type="submit" class="btn btn-primary btn-xs">Next</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- start of second page -->
+            <section id="secondPage" style="display:none;">
+                <div class="form-group">
+                    <label for="inputShiftStart" class="control-label col-xs-12">Shift Start Time</label>
                     <div class="col-xs-12">
                         <input type="time" class="form-control" id="inputShiftStart" placeholder="Shift Start Time">
+                        <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <!--<label for="inputPassword" class="control-label col-xs-2">Password</label>-->
+                    <label for="inputShiftEnd" class="control-label col-xs-12">Shift End Time</label>
                     <div class="col-xs-12">
                         <input type="time" class="form-control" id="inputShiftEnd" placeholder="Shift End Time">
+                        <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="active" class="control-label col-xs-12">Are You Interested In Carpool?</label>
                     <div class="col-xs-12">
-                        <label class="radio-inline" for="pooler">
-                            <input type="radio" name="poolseek" id="pooler" value="0" checked="checked">
-                            Pooler
+                        <label class="radio-inline" for="yes">
+                            <input type="radio" name="active" id="yes" value="1" checked="checked">
+                            Yes
                         </label>
-                        <label class="radio-inline" for="seeker">
-                            <input type="radio" name="poolseek" id="seeker" value="1">
-                            Seeker
+                        <label class="radio-inline" for="no">
+                            <input type="radio" name="active" id="no" value="0">
+                            No
                         </label>
                     </div>
                 </div>
+                <!--<div class="form-group">
+            <label for="poolseek" class="control-label col-xs-12">Interested As</label>
+            <div class="col-xs-12">
+                <label class="radio-inline" for="pooler">
+                    <input type="radio" name="poolseek" id="pooler" value="0" checked="checked">
+                    Pooler
+                </label>
+                <label class="radio-inline" for="seeker">
+                    <input type="radio" name="poolseek" id="seeker" value="1">
+                    Seeker
+                </label>
+            </div>
+        </div>-->
                 <div class="form-group">
                     <div class="col-xs-12">
                         <button id="btnUpdate" type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
                     </div>
                 </div>
-            </form>
-        </div>
-       
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-        <script src="scripts/jquery.min.js"></script>
-        <script src="scripts/bootstrap.min.js"></script>
-        <script type="text/javascript" src="scripts/profile.js"></script>        
-    </body>
+            </section>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/jquery.base64.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/jquery.pleaseWait.js"></script>
+    <script src="scripts/validator.min.js"></script>
+    <script src="scripts/session.js"></script>
+    <script type="text/javascript" src="scripts/profile.js"></script>
+</body>
 </html>

@@ -7,12 +7,27 @@ body {
     font-size: 12px;
 }
 
-
-#dvMap {
-
-    margin-top:-116px;
+.header {
+    font-size: 21px;
+    font-weight: bold;
+    /*padding-left: 12px;*/
+    float:left;
+    padding-top: 10px;
+    color:#337ab7;
+    height:7vh;
 }
 
+#listButton
+{
+    position: absolute;
+    bottom: 20px;
+    left: 40%;
+}
+
+hr{
+    margin-top:0px;
+    margin-bottom:0px;
+}
 
 @media screen and (orientation: portrait) {
 }

@@ -11,7 +11,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     padding-left: 12px;
-    padding-top: 15px;
+    padding-top: 10px;
     color:#337ab7;
     height:7vh;
 }
@@ -21,17 +21,33 @@ body {
 }
 
 .form-container button{
-    margin-top:30px;
+    margin-top:15px;
 }
 
 .form-container #headingText
 {
-    font-size:13px;
+    font-size:15px;
 }
 
 form
 {
     margin-top:50px;
+}
+
+.form-control
+{
+    height:30px;
+}
+
+hr{
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+form label
+{
+    font-size:15px;
+    font-weight:normal;
 }
 
 .header .text{
