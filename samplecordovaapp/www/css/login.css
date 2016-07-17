@@ -1,57 +1,10 @@
-body {
-    -webkit-touch-callout: none;
-    -webkit-text-size-adjust: none;
-    -webkit-user-select: none;
-    background-color: #fff;
-    font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
-    font-size: 12px;
-}
-
-.header {
-    font-size: 24px;
-    font-weight: bold;
-    padding-left: 12px;
-    padding-top: 10px;
-    color:#337ab7;
-    height:7vh;
-}
-
 .form-container{
-    padding: 30px 30px 75px 30px;
-}
-
-.form-container button{
-    margin-top:15px;
-}
-
-.form-container #headingText
-{
-    font-size:15px;
+    padding: 60px 30px 75px 30px;
 }
 
 form
 {
     margin-top:50px;
-}
-
-.form-control
-{
-    height:30px;
-}
-
-hr{
-    margin-top:15px;
-    margin-bottom:15px;
-}
-
-form label
-{
-    font-size:15px;
-    font-weight:normal;
-}
-
-.header .text{
-    padding-left: 5px;
 }
 
 .footer{
@@ -61,11 +14,6 @@ form label
     text-align: center;
     font-size: 15px;
     color: #286090;
-}
-
-.center
-{
-    text-align:center;
 }
 
 @media screen and (orientation: portrait) {

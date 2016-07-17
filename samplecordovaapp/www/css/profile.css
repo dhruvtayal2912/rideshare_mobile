@@ -1,48 +1,10 @@
-body {
-    -webkit-touch-callout: none;
-    -webkit-text-size-adjust: none;
-    -webkit-user-select: none;
-    background-color: #fff;
-    font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
-    font-size: 12px;
-}
-
-.header {
-    font-size: 24px;
-    font-weight: bold;
-    padding-top: 7px;
-    color:#337ab7;
-    text-align:center;
-    height:6vh;
-}
-
-/*.header .text{
-    padding-left: 5px;
-}*/
-
 #btnNext
 {
     float:right;
 }
 
-.form-control
-{
-    height:30px;
-}
-
-hr{
-    margin-top:15px;
-    margin-bottom:15px;
-}
-
-form label
-{
-    font-size:15px;
-    font-weight:normal;
-}
-
 .form-container{
-    padding: 0px 30px 0px 30px;
+    padding: 30px 30px 0px 30px;
 }
 
 .form-horizontal .radio-inline

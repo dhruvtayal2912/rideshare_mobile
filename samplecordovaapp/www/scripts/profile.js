@@ -25,10 +25,10 @@
                 if ($("#secondPage").css("display") == "none") {
                     $("#firstPage").css("display", "none");
 
-                    $(".header .glyphicon-chevron-left").css("display", "inline-block");
+                    $(".backArrow .glyphicon-chevron-left").css("display", "inline-block");
                     $("#secondPage").css("display", "block");
                     $("#secondPage").css("position", "absolute");
-                    $("#secondPage").css("top", "65px");
+                    $("#secondPage").css("top", "100px");
                     $("#secondPage").css("padding-right", "30px");
                     $("#secondPage input[type=time]").prop('required', true);
 
@@ -69,7 +69,8 @@
                             if (xhr.status == 401)
                                 window.location.href = "login.html";
                             else
-                                alert("There is some problem at the moment. Please try again.")
+                                window.location.href = "login.html";
+                                //alert("There is some problem at the moment. Please try again.")
                         }
                     });
 
@@ -78,7 +79,7 @@
             }
         })
 
-        $(".header .glyphicon").on("click", function () {
+        $(".backArrow .glyphicon").on("click", function () {
             window.location.href = "profile.html";
         });
     };

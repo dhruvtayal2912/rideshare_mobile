@@ -71,7 +71,7 @@
             
         //});
 
-        $(".header .glyphicon").on("click", function () {
+        $(".backArrow .glyphicon").on("click", function () {
             window.location.href = "index.html";
         });
     };

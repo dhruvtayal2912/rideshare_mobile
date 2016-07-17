@@ -1,26 +1,18 @@
-body {
-    -webkit-touch-callout: none;
-    -webkit-text-size-adjust: none;
-    -webkit-user-select: none;
-    background-color:#fff;
-    font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
-    font-size:12px;
-}
-
 #getStarted
 {
     width: 100%;
-    /*background-color: rgba(5, 50, 68, 0.97);*/
-    height: 13vh;
+    background-color: #337ab7;
+    height: 10vh;
     color: white;
     text-align: center;
-    font-size: 5vh;
+    font-size: 4vh;
     padding: 14px;
+    font-weight: 400;
 }
 
 .carousel-inner .item img
 {
-    height: 87vh;
+    height: 90vh;
     width: 100vw;
 }
 
