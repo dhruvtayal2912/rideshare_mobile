@@ -62,7 +62,7 @@
                         crossDomain: true,
                         success: function (response) {
                             $('body').pleaseWait('stop');
-                            window.location.href = "main.html";
+                            window.location.href = "home.html";
                         },
                         error: function (xhr, status) {
                             $('body').pleaseWait('stop');

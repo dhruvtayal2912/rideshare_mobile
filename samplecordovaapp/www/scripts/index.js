@@ -25,7 +25,7 @@
                 //stop spinner here
                 $('body').pleaseWait('stop');
                 if(response.Result)
-                    window.location.href = "main.html";
+                    window.location.href = "home.html";
                 else
                     window.location.href = "profile.html";
             },

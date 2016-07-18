@@ -14,9 +14,11 @@
 
         $('form').validator().on('submit', function (e) {
             if (e.isDefaultPrevented()) {
+                $(".warning").css("display", "none");
                 //Nothing to do if form is invalid
             } else {
-                e.preventDefault();
+                e.preventDefault();               
+
                 var username = $("#inputName").val();
                 var password = $("#inputPassword").val();
                 //start spinner here
@@ -36,19 +38,21 @@
                             // Create session. 
                             RideShare.Session.getInstance().set(response.Token);
 
+                            if (response.ExistingProfileData != null) {
+                                localStorage["Name"] = response.ExistingProfileData.Name;
+                                localStorage["Email"] = response.ExistingProfileData.Email;
+                            }
+                            else
+                            {
+                                alert("There is some problem at the moment. Please try again.")
+                                window.location.href = "login.html";
+                            }
+
                             if (response.HasProfile) {
-                                window.location.href = "main.html";
+                                window.location.href = "home.html";
                             }
                             else {
-                                if (response.ExistingProfileData != null) {
-                                    localStorage["Name"] = response.ExistingProfileData.Name;
-                                    localStorage["Email"] = response.ExistingProfileData.Email;
-                                    window.location.href = "profile.html";
-                                }
-                                else
-                                {
-                                    alert("There is some problem at the moment. Please try again.");
-                                }                                
+                                window.location.href = "profile.html";                                                             
                             }
                             return false;
                         } else {
@@ -59,7 +63,7 @@
                     },
                     error: function (xhr, status, error) {
                         $('body').pleaseWait('stop');
-                        alert("There is some problem at the moment. Please try again.");
+                        $(".warning").css("display", "block");
                     }
                 });
             }
