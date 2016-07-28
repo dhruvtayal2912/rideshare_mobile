@@ -54,10 +54,9 @@ Map.prototype.init = function () {
 Map.prototype.render = function (result) {
 
     var markers = [];
-    debugger;
     var result = this.mapData;
+    debugger;
     if (result) {
-
         for (var index = 0; index < result.length; index++) {
             var markerOpt = {};
             markerOpt.lat = result[index].Latitude;
@@ -71,9 +70,10 @@ Map.prototype.render = function (result) {
         }
     }
 
+
     var mapOptions = {
         center: new google.maps.LatLng(this.currentUser.Latitude, this.currentUser.Longitude),
-        zoom: 2,
+        zoom: 6,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
@@ -81,66 +81,106 @@ Map.prototype.render = function (result) {
 
     var lat_lng = new Array();
     var latlngbounds = new google.maps.LatLngBounds();
-    for (i = 0; i < markers.length; i++) {
-        var data = markers[i]
-        var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-        lat_lng.push(myLatlng);
-        var icon = "";
+    var hasCurrentUserExists = false;
+    if (markers.length > 0) {
 
-        if (data.lat == this.currentUser.Latitude && data.lng == this.currentUser.Longitude)
-            icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
-        else if (data.HasParking)
-            icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-        else
-            icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+        for (i = 0; i < markers.length; i++) {
+            var data = markers[i]
+            var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+            lat_lng.push(myLatlng);
+            var icon = "";
 
-
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: data.title,
-            labelAnchor: new google.maps.Point(22, 0),
-            animation: google.maps.Animation.DROP,
-            icon: icon,
-            labelClass: "labels", // the CSS class for the label
-            labelStyle: { opacity: 0.75 }
-        });
-        latlngbounds.extend(marker.position);
-        (function (marker, data) {
-
-            var hasParking;
-            if (data.HasParking)
-                hasParking = data.Name + " Has parking";
+            if (data.lat == this.currentUser.Latitude && data.lng == this.currentUser.Longitude) {
+                icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+                hasCurrentUserExists = true;
+            }
+            else if (data.HasParking == "1")
+                icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
             else
-                hasParking = "";
+                icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
 
-            var content = '<div id="iw-container">' +
-			'<div class="iw-content">' +
-			'<div class="iw-subTitle">' + data.Name + '</div>' +
-			'<br><span class="glyphicon glyphicon-phone"></span><a href="tel:' + data.Contact + '">' + data.Contact + '</a> <br><span class="glyphicon glyphicon-envelope"></span>' + data.Email + ' </p>' +
-		    '</div>' +
-             '<div class="iw-bottom-gradient">' + hasParking + '</div>' +
-			'</div>';
 
-            var infoWindow = new google.maps.InfoWindow({ content: content, maxWidth: 300 });
-
-            google.maps.event.addListener(marker, "click", function (e) {
-                if (!(data.lat == self.currentUser.Latitude && data.lng == self.currentUser.Longitude)) {
-                    infoWindow.setContent(content);
-                    infoWindow.open(map, marker);
-                }
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: data.title,
+                labelAnchor: new google.maps.Point(22, 0),
+                animation: google.maps.Animation.DROP,
+                icon: icon,
+                labelClass: "labels", // the CSS class for the label
+                labelStyle: { opacity: 0.75 }
             });
-        })(marker, data);
+            latlngbounds.extend(marker.position);
+            (function (marker, data) {
+                debugger;
+                var hasParking;
+                if (data.HasParking == "1")
+                    hasParking = data.Name + " Has parking";
+                else
+                    hasParking = "";
+
+                console.log(data);
+
+                var content = '<div id="iw-container">' +
+                    '<div style="border:1px solid grey;height:42px;width:42px"><img src="images/man_default.png" height="40px" width="40px" /></div>' +
+                '<div class="iw-content" style="float:right;padding-left:10px;">' +
+                '<div class="iw-subTitle" style="text-align: center;font-weight: bold;" >' + data.Name + '</div>' +
+                '<br><span class="glyphicon glyphicon-phone"></span><a href="tel:' + data.Contact + '" style="margin-left:5px">'
+                + data.Contact + '</a> <br><span class="glyphicon glyphicon-envelope"></span><span style="margin-left:5px">' + data.Email + '</span> </p>' +
+                '</div>' +
+                 '<div class="iw-bottom-gradient" style="color: green;font-weight: bold;text-align: center;">' + hasParking + '</div>' +
+                '</div>';
+
+                var infoWindow = new google.maps.InfoWindow({ content: content, maxWidth: 300 });
+
+                google.maps.event.addListener(marker, "click", function (e) {
+                    if (!(data.lat == self.currentUser.Latitude && data.lng == self.currentUser.Longitude)) {
+                        infoWindow.setContent(content);
+                        infoWindow.open(map, marker);
+                    }
+                    else {
+                        infoWindow.setContent("Hey, that's You!");
+                        infoWindow.open(map, marker);
+                    }
+                });
+            })(marker, data);
+        }
     }
-    map.setCenter(latlngbounds.getCenter());
-    map.fitBounds(latlngbounds);
+
+        debugger;
+        if (!hasCurrentUserExists) {
+
+            var myLatlng = new google.maps.LatLng(self.currentUser.Latitude, self.currentUser.Longitude);
+            var infowindow = new google.maps.InfoWindow({
+                content: "Hey, that's you!"
+            });
+
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,               
+                labelAnchor: new google.maps.Point(22, 0),
+                animation: google.maps.Animation.DROP,
+                icon: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
+                labelClass: "labels", // the CSS class for the label
+                labelStyle: { opacity: 0.75 }
+            });
+            latlngbounds.extend(marker.position);
+            marker.addListener('click', function () {
+                infowindow.open(map, marker);
+            });
+        }
+
+        map.setCenter(latlngbounds.getCenter());
+        map.fitBounds(latlngbounds);
+    
 
 
-    this.mapOptions = {
-        center: new google.maps.LatLng(this.currentLat, this.currentLong),
-        zoom: 10,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+
+    //this.mapOptions = {
+    //    center: new google.maps.LatLng(this.currentUser.Latitude, this.currentUser.Longitude),
+    //    zoom: 10,
+    //    mapTypeId: google.maps.MapTypeId.ROADMAP
+    //};
 
 }
 
@@ -152,7 +192,7 @@ Map.prototype.getData = function () {
         url: this.APIURL + "/employeedetail/" + encodeURIComponent("dhruv.tayal@markit.com"),
         contentType: 'application/json',
         success: function (data) {
-            console.log(data);
+
             self.markers = data;
             self.render();
         },

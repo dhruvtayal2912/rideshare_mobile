@@ -12,10 +12,36 @@
         document.addEventListener('pause', onPause.bind(this), false);
         document.addEventListener('resume', onResume.bind(this), false);
 
+        if (localStorage["Name"])
+            $("#username").text(localStorage["Name"]);
+
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
         $("#settings").on("click", function () {
             window.location.href = "editProfile.html";
 
+        });
+        $("#logOut").on("click", function () {
+            bootbox.confirm("Are you sure you want to logout ?", function (result) {
+                if (result) {
+                    $.ajax({
+                        type: "POST",
+                        dataType: 'json',
+                        url: "http://ndadevpc204:8082/api/account/logout",
+                        data: JSON.stringify(RideShare.Session.getInstance().get()),
+                        contentType: 'application/json',
+                        crossDomain: true,
+                        success: function (data, status, xhr) {
+                            if (data.IsDeleted) {
+                                localStorage.clear();
+                            }
+                            window.location.href = "login.html";
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+            });
         })
 
     };

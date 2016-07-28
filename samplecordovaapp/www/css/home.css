@@ -1,21 +1,13 @@
-/*body {
-    -webkit-touch-callout: none;
-    -webkit-text-size-adjust: none;
-    -webkit-user-select: none;
-    background-color: #fff;
-    font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
-    font-size: 12px;
-}*/
 
 #listButton
 {  
     position: fixed;   
-    width: 104vw;
+       width: 104vw;
     bottom:0;
 }
 
 #listButton button{
-    width: 49%;
+       width: 49%;
     margin-left: -5px;
 }
 
@@ -26,6 +18,139 @@ hr{
 
 .btn-sharp {
   border-radius:0;
+}
+
+#slider .slider-selection {
+	background: #BABABA;
+}
+
+#userInfo
+{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#userInfo img
+{
+    width: 75px;
+    height: 70px;
+    margin-bottom:5px;
+}
+
+.heading
+{
+      padding-left: 10px;
+    font-size: 18px;
+    background-color: #cc4b4b;
+    padding-bottom: 3px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid #888;
+    color:white;
+}
+
+#filterContainer
+{
+    margin-bottom:15px;
+    /*padding-left: 10px;*/
+}
+
+.filter{
+    overflow:hidden;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-bottom:1px solid rgba(129, 173, 183, 0.65);;
+    height:56px;
+}
+
+.filter h4
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+   font-size:medium;
+    color: grey;
+    font-weight: 500;
+  
+}
+
+.filter label{
+    font-size:14px;
+}
+
+#logOut
+{
+    font-size: small; 
+    /* border-top: 1px solid #888; */
+    width: 100%;
+    /* padding-left: 10px; */
+    position: absolute;
+    bottom: 10px;
+    padding-bottom: -6px;
+    /* background-color: #337ab7; */
+    color: #0c0c0c;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 2px;
+    text-decoration: underline;
+
+}
+
+#apply
+{
+    margin-top: 10px;
+}
+
+#apply button{
+    width: 50%;
+    margin-left: 48px;
+}
+
+.icon-bar
+{
+    color:white;
+}
+
+.header .glyphicon-edit
+{
+    float: right;
+    margin-right: 20px;
+    padding-top: 4px;
+}
+
+.listItem {
+        margin-bottom: 10px;
+    margin-left: 2px;
+    font-size: medium;
+}
+
+.list-group-item {
+        padding: 0px 5px 7px 10px;        
+        background-color:#f9f3eb;
+}
+
+.span-glyph{
+    margin-left:5px;
+}
+#custom-search-input{
+    margin-top:6px;
+    margin-right:-5px;
+}
+
+
+.gm-style-iw {
+    background-color:#bfe3f5;
+}
+
+.modal-dialog {
+    margin-top:150px;
+}
+
+.seeker {
+        float: left;
+    /* margin-left: 10px; */
+    margin-right: 34px;
 }
 @media screen and (orientation: portrait) {
 }

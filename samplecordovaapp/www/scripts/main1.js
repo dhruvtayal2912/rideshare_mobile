@@ -32,6 +32,8 @@ app.prototype.initEvents = function () {
         }
         else
             self.getData();
+
+
     });
     $("#search").on("click", $.proxy(self.getDataByAddress, self))
 }
@@ -51,9 +53,12 @@ app.prototype.getData = function () {
         crossDomain: true,
         success: function (data, status, xhr) {
             self.data = data;
-            
+            console.log(data);
+
+            console.log(data.CurrentUserData);
+
             window.localStorage.setItem("CurrentUserData", JSON.stringify(data.CurrentUserData));
-                        
+
             if (self.viewType == "map") {
                 var mapObj = new Map(data);
                 mapObj.render();
@@ -71,8 +76,7 @@ app.prototype.getData = function () {
         error: function (err) {
             console.log(err);
         },
-        complete:function()
-        {
+        complete: function () {
             $('body').pleaseWait('stop');
         }
     });
@@ -136,8 +140,6 @@ app.prototype.getFilteredData = function (filterOptions) {
         crossDomain: true,
         success: function (response) {
             self.data = response;
-            window.localStorage.setItem("CurrentUserData", JSON.stringify(response.CurrentUserData));
-
             $(".navbar-toggle").click();
             if (response.Result.length > 0)
                 $("#resCount").html("Matching " + response.Result.length + " Results");

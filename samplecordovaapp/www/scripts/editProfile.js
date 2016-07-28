@@ -15,11 +15,29 @@
 
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
 
+        if (localStorage["CurrentUserData"])
+        {
+            var obj = JSON.parse(localStorage["CurrentUserData"]);
+            
+            $("#inputContact").val(obj.Contact);
+            $("#inputAddress").val(obj.Address);
+            $("#inputCarNumber").val(obj.VehicleNo);
+            if (obj.Active == "1")
+                $('div.toggle').removeClass("off");
+            else
+                $('div.toggle').addClass("off");
+            debugger;
+            if (obj.UserType == 1)
+                $("#seeker").attr("checked", "checked");
+            else
+                $("#pooler").attr("checked", "checked");
+        }
+
+
         $("#inputName").val(localStorage["Name"]);
         $("#inputEmail").val(localStorage["Email"]);
 
         $('form').validator().on('submit', function (e) {
-            debugger;
             if (e.isDefaultPrevented()) {
                 // handle the invalid form...
             } else {
@@ -34,6 +52,7 @@
                     ShiftStartTime: $("#inputShiftStart").val(),
                     ShiftEndTime: $("#inputShiftEnd").val(),
                     Active: $('div.toggle').hasClass("off") ? 0 : 1,
+                    UserType:$("input[name='rdPooler']:checked").val(),
                     Email: localStorage["Email"]
                 };
 

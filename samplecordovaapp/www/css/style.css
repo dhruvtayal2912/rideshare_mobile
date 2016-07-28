@@ -89,7 +89,8 @@ body
 
 #custom-search-input {
         margin:0;
-        margin-top: 10px;
+        margin-top: 3px;
+        margin-right:-5px;
         padding: 0;
 		width:850px;
     }

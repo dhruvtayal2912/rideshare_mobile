@@ -5,107 +5,114 @@
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/slider.css" rel="stylesheet">
-
+    <link href="css/sliderbs.css" rel="stylesheet" />
     <link href="css/jasny-bootstrap.min.css" rel="stylesheet" />
     <link href="css/navmenu-reveal.css" rel="stylesheet" />
-    <link href="css/common.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="css/home.css">
-
-    <script src="http://maps.googleapis.com/maps/api/js" type="text/javascript"></script>
-    <title>Markit RideShare Login</title>
-
-    <!--<script>
-    function initialize() {
-      var mapProp = {
-        center:new google.maps.LatLng(51.508742,-0.120850),
-        zoom:5,
-        mapTypeId:google.maps.MapTypeId.ROADMAP
-      };
-      var map = new google.maps.Map(document.getElementById("dvMap"), mapProp);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-        </script>-->
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
+    <title>Markit RideShare Home</title>
 </head>
 <body>
-
     <!-- start of slider -->
     <div class="navmenu navmenu-default navmenu-fixed-left">
-        <a class="navmenu-brand" href="#">Filter Results by </a>
-        <ul class="nav navmenu-nav">
 
-            <li>
-                <h5 class="muted">Gender</h5>
-                <div class="radio" id="eleGender">
-                    <label>
+
+
+        <div id="userInfo">
+            <div><img src="images/man_default.png" style="border:1px solid #c5c1c1;"/></div>
+            <div id="username"></div>
+        </div>
+        <div class="heading">Filter Results By</div>
+        <div id="filterContainer">
+
+
+
+            <div class="filter">
+                <h4 class="muted">Gender</h4>
+
+
+                <div id="eleGender" class="col-xs-12">
+                    <label class="radio-inline">
                         <input type="radio" name="genderRadio" class="gender" value="0">
                         Male
                     </label>
-                    <label>
+
+                    <label class="radio-inline" for="female">
                         <input type="radio" name="genderRadio" class="gender" value="1">
                         Female
                     </label>
                 </div>
-            </li>
-            <li class="active">
-                <h5 class="muted">Registration No</h5>
-                <div class="radio">
-                    <label>
+
+
+
+
+
+            </div>
+            <div class="filter">
+                <h4 class="muted">Searching For</h4>
+                <div class="col-xs-12">
+                    <label class="radio-inline">
+                        <input type="radio" name="userTypeRadio" class="userType" value="0">
+                        Pooler
+                    </label>
+
+                    <label class="radio-inline">
+                        <input type="radio" name="userTypeRadio" class="userType" value="1">
+                        Seeker
+                    </label>
+                </div>
+
+
+            </div>
+            <div class="filter">
+                <h4 class="muted">Vehicle No</h4>
+                <div class="col-xs-12">
+
+                    <label class="radio-inline">
                         <input type="radio" name="regNoRadio" class="registration" value="0">
                         Even
                     </label>
-                    <label>
+
+                    <label class="radio-inline">
                         <input type="radio" name="regNoRadio" class="registration" value="1">
                         Odd
                     </label>
                 </div>
-            </li>
-            <li>
-                <h5 class="muted">Radius (kms)</h5>
-                <div class="rangefilter" style="margin-bottom: 10px;">
-                    <input type="text" class="span2 sl" value="2">
-                </div>
-            </li>
 
-            <li>
-                <h5 class="muted">Have Parking ?</h5>
-                <div class="rangefilter" style="margin-bottom: 10px;">
-                    <input type="checkbox" class="" value="">
+
+
+            </div>
+            <div class="filter">
+                <h4 class="muted">Radius (Km)</h4>
+                <div class="rangefilter">
+                    <input id="radiusSlider" data-slider-id='slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="3" />
                 </div>
-            </li>
-            </li>
-        </ul>
-        <button type="button" class="btn btn-success" id="btnSearch">
-            Apply Filter
-        </button>
-        <!--<ul class="nav navmenu-nav">
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu navmenu-nav">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                </ul>
-            </li>
-        </ul>-->
+
+
+            </div>
+            <div class="filter" style="padding-top:10px;">
+                <h4 class="muted">Has Parking <input id="parking" type="checkbox" style="margin-left: 15px; vertical-align: bottom;" class="" value="1"></h4>
+            </div>
+            <div id="apply">
+                <button type="button" class="btn btn-primary" id="btnSearch" style="background-color: #cc4b4b; border: 1px solid black;">
+
+                    Apply
+                </button>
+
+
+            </div>
+        </div>
+        <div id="logOut">LOG OUT</div>
     </div>
     <!-- end of slider -->
 
     <div class="canvas" style="">
-        <div class="navbar navbar-default navbar-fixed-top" style="">
+        <div class="navbar navbar-default navbar-fixed-top" style="background-color: #337ab7;color: white;">
             <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -113,15 +120,25 @@
             </button>
             <div class="header">
                 <span class="text" id="resCount"></span>
-                <span class="glyphicon glyphicon-edit" style="padding-left:15px;" id="settings"></span>
+                <span class="glyphicon glyphicon-user" style="float:right;padding-right:8px;margin-top:5px;" id="settings"></span>
             </div>
-
         </div>
+
         <hr />
         <div>
-            <div id="dvMap" style="width:100vw;height:85vh;"></div>
-            <ul id="listViewDv" class="list-group"></ul>
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class=" search-query form-control" placeholder="Search" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button" id="search">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div id="dvMap" style="width:100vw;height:78vh;"></div>
 
+            <ul id="listViewDv" class="list-group"></ul>
             <div id="listButton">
                 <button type="button" id="btnMap" class="btn btn-info btn-sharp"><span class="glyphicon glyphicon-map-marker"></span> MAP</button>
                 <button type="button" id="btnList" class="btn btn-info btn-sharp"><span class="glyphicon glyphicon-list"></span> LIST</button>
@@ -131,12 +148,13 @@
 
 
     <script id="userTemplate" type="text/x-jQuery-tmpl">
+
         <li class="list-group-item">
             <div class="listImage" style="float:left;padding-top:5px;">
                 {{if (Gender == "0")}}
-                <img src="images/man_default.png" alt="image" style="height:70px;width:75px;"/>
+                <img src="images/man_default.png" alt="image" style="height:64px;width:67px;margin-top:10px;" />
                 {{else}}
-                <img src="images/female_default.png" alt="image" style="height:70px;width:75px;" />
+                <img src="images/female_default.png" alt="image" style="height:64px;width:67px;margin-top:10px;" />
                 {{/if}}
             </div>
             <div style="overflow:hidden;padding-left: 10px;">
@@ -144,47 +162,49 @@
                     ${Name}
                 </h4>
                 <!--<h5>
-                    <a href="http://www.cls.edu.cn">${Designation}</a>
-                </h5>-->
-                <a data-toggle="tab" href="mailto:${Email}">
-                    <span class="glyphicon glyphicon-envelope">${Email}</span>
+                <a href="http://www.cls.edu.cn">${Designation}</a>
+            </h5>-->
+                <a data-toggle="tab" href="mailto:${Email}" class="listItem">
+                    <span class="glyphicon glyphicon-envelope"><span  class="span-glyph">${Email}</span></span>
                 </a>
-                <a data-toggle="tab" href="#email">
-                    <span class="glyphicon glyphicon-phone">${Contact}</span>
+                <a data-toggle="tab" href="#email" class="listItem">
+                    <span class="glyphicon glyphicon-phone"><span class="span-glyph">${Contact}</span></span>
                 </a>
-                <span class="glyphicon glyphicon-time">${ShiftStartTime} hrs. - ${ShiftEndTime} hrs.</span>
-                <span class="glyphicons glyphicon-ok"></span>
+                <span class="glyphicon glyphicon-time"><span  class="span-glyph">${ShiftStartTime} AM. to ${ShiftEndTime} PM</span> </span>
+                
             </div>
         </li>
+
     </script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="scripts/platformOverrides.js"></script>
     <script src="scripts/jquery.min.js"></script>
     <script src="scripts/jquery.base64.min.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/bootstrap-slider.js" type="text/javascript"></script>
+    <script src="scripts/bootbox.min.js"></script>
+    <script src="scripts/bootstrap-slider.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js" type="text/javascript"></script>
     <script src="scripts/jasny-bootstrap.min.js"></script>
     <script src="scripts/session.js"></script>
     <script type="text/javascript" src="scripts/home.js"></script>
     <script src="scripts/jquery.tmpl.js"></script>
-    <script src="scripts/filters.js" type="text/javascript"></script>
+    <script src="scripts/jquery.pleaseWait.js"></script>
+    <script src="scripts/filter.js"></script>
     <script src="scripts/map.js" type="text/javascript"></script>
     <script src="scripts/listView.js" type="text/javascript"></script>
-    <script src="scripts/main.js" type="text/javascript"></script>
+    <script src="scripts/main1.js" type="text/javascript"></script>
 
     <script>
 
         $(function () {
-            //$('.sl').slider({
-            //    formater: function (value) {
-            //        return 'Current value: ' + value;
-            //    }
-            //});
+
+            $('#radiusSlider').slider({
+                formatter: function (value) {
+                    return 'Current value: ' + value;
+                }
+            });
             appObj = new app();
             var filterObj = new filters();
-
-
-
         })
     </script>
 </body>
